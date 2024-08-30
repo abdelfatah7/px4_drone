@@ -1,0 +1,972 @@
+<?xml version="1.0"?>
+<!-- DO NOT EDIT: Generated from standard_vtol.sdf.jinja -->
+<sdf version='1.10'>
+  <model name='standard_vtol'>
+    <pose>0 0 0 0 0 0</pose>
+    <link name='base_link'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.00001</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.01</size>
+          </box>
+        </geometry>
+       </visual>
+      <sensor name="imu_sensor" type="imu">
+        <always_on>1</always_on>
+        <update_rate>750</update_rate>
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.0003394</stddev>
+                <dynamic_bias_stddev>3.8785e-05</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>1000</dynamic_bias_correlation_time>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.0003394</stddev>
+                <dynamic_bias_stddev>3.8785e-05</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>1000</dynamic_bias_correlation_time>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.0003394</stddev>
+                <dynamic_bias_stddev>3.8785e-05</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>1000</dynamic_bias_correlation_time>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.004</stddev>
+                <dynamic_bias_stddev>0.006</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>300</dynamic_bias_correlation_time>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.004</stddev>
+                <dynamic_bias_stddev>0.006</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>300</dynamic_bias_correlation_time>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.004</stddev>
+                <dynamic_bias_stddev>0.006</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>300</dynamic_bias_correlation_time>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+      <sensor name="air_pressure_sensor" type="air_pressure">
+        <always_on>1</always_on>
+        <update_rate>250</update_rate>
+        <air_pressure>
+          <pressure>
+            <noise type="gaussian">
+              <mean>0</mean>
+              <stddev>0.01</stddev>
+            </noise>
+          </pressure>
+        </air_pressure>
+      </sensor>
+
+      <sensor name="navsat_sensor" type="navsat">
+        <always_on>1</always_on>
+        <update_rate>250</update_rate>
+      </sensor>
+    </link>
+    <link name='body'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 1.0787674291821901e-06 2.48048001138273e-06 0 0 0</pose>
+        <mass>7.8548</mass>
+        <inertia>
+          <ixx>0.175513651319989</ixx>
+          <ixy>0.0045363530198351</ixy>
+          <ixz>2.34170191206581E-05</ixz>
+          <iyy>0.832754737010764</iyy>
+          <iyz>8.10623969434147E-06</iyz>
+          <izz>0.688398502421898</izz>
+        </inertia>
+      </inertial>
+      <collision name='body_collision'>
+        <pose>-0.2 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1 2.3 0.4</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>100000</kp>
+              <kd>1.0</kd>
+              <max_vel>0.1</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='body_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>meshes/body.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>.175 .175 .175 1.0</ambient>
+          <diffuse>.175 .175 .175 1.0</diffuse>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+      
+    </link>
+
+
+    <link name="r">
+      <pose relative_to='r_servo'>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>0.00000001</mass>
+        <inertia>
+          <ixx>0.175513651319989</ixx>
+          <ixy>0.0045363530198351</ixy>
+          <ixz>2.34170191206581e-05</ixz>
+          <iyy>0.832754737010764</iyy>
+          <iyz>8.10623969434147e-06</iyz>
+          <izz>0.688398502421898</izz>
+        </inertia>
+        <pose>0 1.07876742918219e-06 2.48048001138273e-06 0 0 0</pose>
+      </inertial>
+      <visual name='r_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>meshes/r.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0 0 1 1.0</ambient>
+          <diffuse>0 0 1 1.0</diffuse>
+        </material>
+      </visual>
+    </link>
+
+
+    <joint name='ali' type='fixed'>
+      <parent>body</parent>
+      <child>base_link</child>
+      <pose relative_to='body'>0 0 -0.08 0 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <dynamics>
+          <damping>1.000</damping>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
+        </ode>
+      </physics>
+    </joint>
+    
+    <joint name='al_servo' type='revolute'>
+      <parent>body</parent>
+      <child>al</child>
+      <pose relative_to='body'>-0.17703 0.667 0.049802 0 0 0</pose>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-0.53</lower>
+          <upper>0.53</upper>
+        </limit>
+        <dynamics>
+          <damping>1.000</damping>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
+        </ode>
+      </physics>
+    </joint>
+    
+    <joint name='ar_servo' type='revolute'>
+      <pose relative_to='body'>-0.17703 -0.667 0.049802 3.1416 0 0</pose>
+      <parent>body</parent>
+      <child>ar</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-0.53</lower>
+          <upper>0.53</upper>
+        </limit>
+        <dynamics>
+          <damping>1.000</damping>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
+        </ode>
+      </physics>
+    </joint>
+    
+    
+    <joint name='el_servo' type='revolute'>
+      <pose relative_to='body'>-0.93861 0.055498 0.020538 0 0 0</pose>
+      <parent>body</parent>
+      <child>el</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <!-- -30/+30 deg. -->
+          <lower>-0.53</lower>
+          <upper>0.53</upper>
+        </limit>
+        <dynamics>
+          <damping>1.000</damping>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
+        </ode>
+      </physics>
+    </joint>
+
+
+    <joint name='er_servo' type='revolute'>
+      <pose relative_to='body'>-0.93861000000000006 -0.055502000000000003 0.020538000000000001 3.1415853071795872 0 0</pose>
+      <parent>body</parent>
+      <child>er</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <!-- -30/+30 deg. -->
+          <lower>-0.53</lower>
+          <upper>0.53</upper>
+        </limit>
+        <dynamics>
+          <damping>1.000</damping>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
+        </ode>
+      </physics>
+    </joint>
+    
+    <joint name='r_servo' type='revolute'>
+      <pose relative_to='body'>-0.959205349029573 0 0.31880107876745101 0 3.1415853071795872 3.1415853071795872</pose>
+      <parent>body</parent>
+      <child>r</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <!--limit>
+          <-30/+30 deg.>
+          <lower>-0.53</lower>
+          <upper>0.53</upper>
+        </limit-->
+        <dynamics>
+          <damping>1.000</damping>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
+        </ode>
+      </physics>
+    </joint>
+
+
+    <joint name='bl_motor' type='revolute'>
+    <pose relative_to='body'>-0.44069999999999998 0.42999999999999999 0.081002000000000005 0 0 0</pose>
+      <child>bl_prop</child>
+      <parent>body</parent>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    
+    <joint name='br_motor' type='revolute'>
+       <pose relative_to='body'>-0.44069999999999998 -0.42999999999999999 0.081002000000000005 0 0 0</pose>
+      <parent>body</parent>
+      <child>br_prop</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    
+    <joint name='fl_motor' type='revolute'>
+        <pose relative_to='body'>0.43929989650113299 0.44999751951998201 0.080999908068211598 0 0 0</pose>
+      <parent>body</parent>
+      <child>fl_prop</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <joint name='fr_motor' type='revolute'>
+          <pose relative_to='body'>0.43929989650113299 -0.45000248048001001 0.080999908068211598 0 0 0</pose>
+      <parent>body</parent>
+      <child>fr_prop</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    
+    <joint name='puller_motor' type='revolute'>
+      <pose relative_to='body'>0.52629989650112297 0 0 0 0 0</pose>
+      <parent>body</parent>
+      <child>puller</child>
+      <axis>
+        <xyz>-1 0 0</xyz>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    
+
+    <link name='bl_prop'>
+      <pose relative_to='bl_motor'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 1.07876742918219e-06 2.48048001138273e-06 0 0 0</pose>
+        <mass>0.005</mass>
+        <inertia>
+	<ixx>0.175513651319989</ixx>
+	<ixy>0.0045363530198351</ixy>
+	<ixz>2.34170191206581E-05</ixz>
+	<iyy>0.832754737010764</iyy>
+	<iyz>8.10623969434147e-06</iyz>
+	<izz>0.688398502421898</izz>
+        </inertia>
+      </inertial>
+      <collision name='bl_prop_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.01</length>
+            <radius>0.15</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='bl_prop_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>meshes/bl_prop.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0 0 1 1.0</ambient>
+          <diffuse>0 0 1 1.0</diffuse>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+  
+    <link name='br_prop'>
+      <pose relative_to='br_motor'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 1.07876742918219E-06 2.48048001138273E-06 0 0 0</pose>
+        <mass>0.005</mass>
+        <inertia>
+          <ixx>0.175513651319989</ixx>
+          <ixy>0.0045363530198351</ixy>
+          <ixz>2.34170191206581E-05</ixz>
+          <iyy>0.832754737010764</iyy>
+          <iyz>8.10623969434147E-06</iyz>
+          <izz>0.688398502421898</izz>
+        </inertia>
+      </inertial>
+      <collision name='br_prop_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.01</length>
+            <radius>0.15</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='br_prop_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>meshes/br_prop.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0 0 1 1.0</ambient>
+          <diffuse>0 0 1 1.0</diffuse>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+
+    <link name='fl_prop'>
+      <pose relative_to='fl_motor'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 1.07876742918219E-06 2.48048001138273e-06 0 0 0</pose>
+        <mass>0.005</mass>
+        <inertia>
+          <ixx>0.175513651319989</ixx>
+          <ixy>0.0045363530198350996</ixy>
+          <ixz>2.34170191206581e-05</ixz>
+          <iyy>0.83275473701076397</iyy>
+          <iyz>8.1062396943414692e-06</iyz>
+          <izz>0.68839850242189804</izz>
+        </inertia>
+      </inertial>
+      <collision name='fl_prop_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.01</length>
+            <radius>0.15</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='fl_prop_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>meshes/fl_prop.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0 0 1 1.0</ambient>
+          <diffuse>0 0 1 1.0</diffuse>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+
+    <link name='fr_prop'>
+      <pose relative_to='fr_motor'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 1.07876742918219e-06 2.48048001138273e-06 0 0 0</pose>
+        <mass>0.005</mass>
+        <inertia>
+          <ixx>0.175513651319989</ixx>
+          <ixy>0.0045363530198350996</ixy>
+          <ixz>2.34170191206581e-05</ixz>
+          <iyy>0.83275473701076397</iyy>
+          <iyz>8.1062396943414692e-06</iyz>
+          <izz>0.68839850242189804</izz>
+        </inertia>
+      </inertial>
+      <collision name='fr_prop_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.01</length>
+            <radius>0.15</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='fr_prop_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>meshes/fr_prop.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0 0 1 1.0</ambient>
+          <diffuse>0 0 1 1.0</diffuse>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+    
+    <link name='puller'>
+      <pose relative_to='puller_motor'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 1.07876742918219e-06 2.48048001138273e-06 0 0 0</pose>
+        <mass>0.005</mass>
+        <inertia>
+          <ixx>0.175513651319989</ixx>
+          <ixy>0.0045363530198350996</ixy>
+          <ixz>2.34170191206581e-05</ixz>
+          <iyy>0.83275473701076397</iyy>
+          <iyz>8.1062396943414692e-06</iyz>
+          <izz>0.68839850242189804</izz>
+        </inertia>
+      </inertial>
+      <collision name='puller_collision'>
+        <pose>0 0 0 0 1.570796327 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.01</length>
+            <radius>0.15</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='puller_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>meshes/puller.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0 0 1 1.0</ambient>
+          <diffuse>0 0 1 1.0</diffuse>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+    </link>
+
+    <link name="al">
+      <pose relative_to='al_servo'>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>0.00000001</mass>
+        <inertia>
+          <ixx>0.175513651319989</ixx>
+          <ixy>0.0045363530198351</ixy>
+          <ixz>2.34170191206581e-05</ixz>
+          <iyy>0.832754737010764</iyy>
+          <iyz>8.10623969434147e-06</iyz>
+          <izz>0.688398502421898</izz>
+        </inertia>
+        <pose>0 1.07876742918219e-06 2.48048001138273e-06 0 0 0</pose>
+      </inertial>
+      <visual name='al_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>meshes/al.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0 0 1 1.0</ambient>
+          <diffuse>0 0 1 1.0</diffuse>
+        </material>
+      </visual>
+    </link>
+    
+    <link name="ar">
+      <pose relative_to='ar_servo'>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>0.00000001</mass>
+        <inertia>
+          <ixx>0.175513651319989</ixx>
+          <ixy>0.0045363530198351</ixy>
+          <ixz>2.34170191206581e-05</ixz>
+          <iyy>0.832754737010764</iyy>
+          <iyz>8.10623969434147e-06</iyz>
+          <izz>0.688398502421898</izz>
+        </inertia>
+        <pose>0 1.07876742918219e-06 2.48048001138273e-06 0 0 0</pose>
+      </inertial>
+      <visual name='ar_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>meshes/ar.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0 0 1 1.0</ambient>
+          <diffuse>0 0 1 1.0</diffuse>
+        </material>
+      </visual>
+    </link>
+    
+    <link name="el">
+      <pose relative_to='el_servo'>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>0.00000001</mass>
+        <inertia>
+          <ixx>0.175513651319989</ixx>
+          <ixy>0.0045363530198351</ixy>
+          <ixz>2.34170191206581e-05</ixz>
+          <iyy>0.832754737010764</iyy>
+          <iyz>8.10623969434147e-06</iyz>
+          <izz>0.688398502421898</izz>
+        </inertia>
+        <pose>0 1.07876742918219e-06 2.48048001138273e-06 0 0 0</pose>
+      </inertial>
+      <visual name='el_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>meshes/el.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.872549057 0.872549057 0.872549057 1</diffuse>
+          <ambient>0.872549057 0.872549057 0.872549057 1</ambient>
+        </material>
+      </visual>
+    </link>
+    
+    <link name="er">
+      <pose relative_to='er_servo'>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>0.00000001</mass>
+        <inertia>
+          <ixx>0.175513651319989</ixx>
+          <ixy>0.0045363530198351</ixy>
+          <ixz>2.34170191206581e-05</ixz>
+          <iyy>0.832754737010764</iyy>
+          <iyz>8.10623969434147e-06</iyz>
+          <izz>0.688398502421898</izz>
+        </inertia>
+        <pose>0 1.07876742918219e-06 2.48048001138273e-06 0 0 0</pose>
+      </inertial>
+      <visual name='er_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>meshes/er.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.872549057 0.872549057 0.872549057 1</diffuse>
+          <ambient>0.872549057 0.872549057 0.872549057 1</ambient>
+        </material>
+      </visual>
+    </link>
+
+        
+    <plugin filename="gz-sim-lift-drag-system" name="gz::sim::systems::LiftDrag">
+      <a0>0.05984281113</a0>
+      <cla>4.752798721</cla>
+      <cda>0.6417112299</cda>
+      <cma>0.0</cma>
+      <alpha_stall>0.3391428111</alpha_stall>
+      <cla_stall>-3.85</cla_stall>
+      <cda_stall>-0.9233984055</cda_stall>
+      <cma_stall>0</cma_stall>
+      <cp>-0.05 0.3 0.05</cp>
+      <area>0.50</area>
+      <air_density>1.2041</air_density>
+      <forward>1 0 0</forward>
+      <upward>0 0 1</upward>
+      <link_name>body</link_name>
+      <control_joint_name>al_servo</control_joint_name>
+      <control_joint_rad_to_cl>-1.0</control_joint_rad_to_cl>
+    </plugin>
+    <plugin
+      filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+      <joint_name>al_servo</joint_name>
+      <sub_topic>servo_0</sub_topic>
+    </plugin>
+    <plugin filename="gz-sim-lift-drag-system" name="gz::sim::systems::LiftDrag">
+      <a0>0.05984281113</a0>
+      <cla>4.752798721</cla>
+      <cda>0.6417112299</cda>
+      <cma>0.0</cma>
+      <alpha_stall>0.3391428111</alpha_stall>
+      <cla_stall>-3.85</cla_stall>
+      <cda_stall>-0.9233984055</cda_stall>
+      <cma_stall>0</cma_stall>
+      <cp>-0.05 -0.3 0.05</cp>
+      <area>0.50</area>
+      <air_density>1.2041</air_density>
+      <forward>1 0 0</forward>
+      <upward>0 0 1</upward>
+      <link_name>body</link_name>
+      <control_joint_name>ar_servo</control_joint_name>
+      <control_joint_rad_to_cl>-1.0</control_joint_rad_to_cl>
+    </plugin>
+    <plugin
+      filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+      <joint_name>ar_servo</joint_name>
+      <sub_topic>servo_1</sub_topic>
+    </plugin>
+    <plugin filename="gz-sim-lift-drag-system" name="gz::sim::systems::LiftDrag">
+      <a0>-0.2</a0>
+      <cla>4.752798721</cla>
+      <cda>0.6417112299</cda>
+      <cma>0.0</cma>
+      <alpha_stall>0.3391428111</alpha_stall>
+      <cla_stall>-3.85</cla_stall>
+      <cda_stall>-0.9233984055</cda_stall>
+      <cma_stall>0</cma_stall>
+      <cp>-0.5 0 0</cp>
+      <area>0.01</area>
+      <air_density>1.2041</air_density>
+      <forward>1 0 0</forward>
+      <upward>0 0 1</upward>
+      <link_name>body</link_name>
+      <control_joint_name>el_servo</control_joint_name>
+      <control_joint_rad_to_cl>-4.0</control_joint_rad_to_cl>
+    </plugin>
+    <plugin filename="gz-sim-lift-drag-system" name="gz::sim::systems::LiftDrag">
+      <a0>-0.2</a0>
+      <cla>4.752798721</cla>
+      <cda>0.6417112299</cda>
+      <cma>0.0</cma>
+      <alpha_stall>0.3391428111</alpha_stall>
+      <cla_stall>-3.85</cla_stall>
+      <cda_stall>-0.9233984055</cda_stall>
+      <cma_stall>0</cma_stall>
+      <cp>-0.5 0 0</cp>
+      <area>0.01</area>
+      <air_density>1.2041</air_density>
+      <forward>1 0 0</forward>
+      <upward>0 0 1</upward>
+      <link_name>body</link_name>
+      <control_joint_name>er_servo</control_joint_name>
+      <control_joint_rad_to_cl>-4.0</control_joint_rad_to_cl>
+    </plugin>
+    <plugin filename="gz-sim-lift-drag-system" name="gz::sim::systems::LiftDrag">
+      <a0>-0.2</a0>
+      <cla>4.752798721</cla>
+      <cda>0.6417112299</cda>
+      <cma>0.0</cma>
+      <alpha_stall>0.3391428111</alpha_stall>
+      <cla_stall>-3.85</cla_stall>
+      <cda_stall>-0.9233984055</cda_stall>
+      <cma_stall>0</cma_stall>
+      <cp>-0.5 0 0</cp>
+      <area>0.01</area>
+      <air_density>1.2041</air_density>
+      <forward>1 0 0</forward>
+      <upward>0 0 1</upward>
+      <link_name>body</link_name>
+      <control_joint_name>r_servo</control_joint_name>
+      <control_joint_rad_to_cl>0.8</control_joint_rad_to_cl>
+    </plugin>
+
+    <plugin
+      filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+      <joint_name>el_servo</joint_name>
+      <sub_topic>servo_2</sub_topic>
+    </plugin>
+
+    <plugin
+      filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+      <joint_name>er_servo</joint_name>
+      <sub_topic>servo_2</sub_topic>
+    </plugin>
+    
+    
+        <plugin
+      filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+      <joint_name>r_servo</joint_name>
+      <sub_topic>servo_3</sub_topic>
+    </plugin>
+    
+    
+    <plugin filename="gz-sim-multicopter-motor-model-system" name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>fr_motor</jointName>
+      <linkName>fr_prop</linkName>
+      <turningDirection>cw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1500</maxRotVelocity>
+      <motorConstant>2e-05</motorConstant>
+      <momentConstant>0.06</momentConstant>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>0</motorNumber>
+      <rotorDragCoefficient>0.000106428</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
+      <motorType>velocity</motorType>
+    </plugin>
+    
+    <plugin
+      filename="gz-sim-multicopter-motor-model-system"
+      name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>bl_motor</jointName>
+      <linkName>bl_prop</linkName>
+      <turningDirection>cw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1500</maxRotVelocity>
+      <motorConstant>2e-05</motorConstant>
+      <momentConstant>0.06</momentConstant>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>1</motorNumber>
+      <rotorDragCoefficient>0.000106428</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
+      <motorType>velocity</motorType>
+    </plugin>
+
+    <plugin filename="gz-sim-multicopter-motor-model-system" name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>fl_motor</jointName>
+      <linkName>fl_prop</linkName>
+      <turningDirection>ccw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1500</maxRotVelocity>
+      <motorConstant>2e-05</motorConstant>
+      <momentConstant>0.06</momentConstant>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>2</motorNumber>
+      <rotorDragCoefficient>0.000106428</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
+      <motorType>velocity</motorType>
+    </plugin>
+    
+    <plugin
+      filename="gz-sim-multicopter-motor-model-system"
+      name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>br_motor</jointName>
+      <linkName>br_prop</linkName>
+      <turningDirection>ccw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1500</maxRotVelocity>
+      <motorConstant>2e-05</motorConstant>
+      <momentConstant>0.06</momentConstant>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>3</motorNumber>
+      <rotorDragCoefficient>0.000106428</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
+      <motorType>velocity</motorType>
+    </plugin>
+    
+    <plugin
+      filename="gz-sim-multicopter-motor-model-system"
+      name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>puller_motor</jointName>
+      <linkName>puller</linkName>
+      <turningDirection>ccw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>1500</maxRotVelocity>
+      <motorConstant>8.54858e-06</motorConstant>
+      <momentConstant>0.01</momentConstant>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>4</motorNumber>
+      <rotorDragCoefficient>0.000106428</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
+      <motorType>velocity</motorType>
+    </plugin>
+
+    <include merge='true'>
+      <uri>model://OakD-Lite</uri>
+      <pose>.12 .03 .242 0 0 0</pose>
+    </include>
+    <joint name="CameraJoint2" type="fixed">
+      <parent>base_link</parent>
+      <child>OakD-Lite/base_link</child>
+      <pose relative_to="base_link">.12 .03 .242 0 0 0</pose>
+    </joint>
+    
+    <static>0</static>
+  </model>
+</sdf>
